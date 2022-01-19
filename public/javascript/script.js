@@ -45,10 +45,10 @@ function updateDOM(providedData = data){
 }
 
 //Format number as money
-function formatMoney(number){
-  return  number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' ₺';
+function formatMoney(money){
+  return  money.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' ₺';
 
 }
 
 
-
+addUserButton.addEventListener('click',getRandomUser);
