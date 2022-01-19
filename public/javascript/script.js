@@ -8,7 +8,10 @@ const calculateWealthButton = document.getElementById('calculate-wealth');
 
 let data = [];
 
-
+getRandomUser()
+getRandomUser();
+getRandomUser();
+getRandomUser();
 
 
 //Fetch random user add money
@@ -27,10 +30,25 @@ async function getRandomUser(){
 
 function addData(object){
     data.push(object);
+    updateDOM();
 }
 
-getRandomUser();
-getRandomUser();
-getRandomUser();
+function updateDOM(providedData = data){
+    //clear main div
+        main.innerHTML = ' <h2><strong>Person</strong> Wealth</h2>';
+        providedData.forEach(item=>{
+            const element = document.createElement('div');
+            element.classList.add('person');
+            element.innerHTML = `<strong>${item.name}</strong> ${formatMoney(item.money)}`
+            main.appendChild(element);
+        });
+}
+
+//Format number as money
+function formatMoney(number){
+  return  number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' ₺';
+
+}
+
 
 
