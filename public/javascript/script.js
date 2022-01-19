@@ -13,10 +13,20 @@ let data = [];
 
 //Fetch random user add money
 async function getRandomUser(){
- const user = await fetch('https://randomuser.me/api/');
- const data = await user.json();
- console.log(data);
+ const response = await fetch('https://randomuser.me/api/');
+ const data = await response.json();
 
+ const user = data.results[0];
+ const newUser = {
+     name: `${user.name.first} ${user.name.last}`,
+     money : Math.floor(Math.random() * 1000000)
+     
+ }
+ addData(newUser);
+}
+
+function addData(object){
+    data.push(object);
 }
 
 getRandomUser();
