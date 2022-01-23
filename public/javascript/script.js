@@ -57,12 +57,20 @@ function showMillionaries(){
 
 }
 
+//Calculate the total wealth
+function calculateTotalWealth(){
+   const wealth = data.reduce((collect,user)=>(collect +=user.money),0);
+   
+   const wealthElement = document.createElement('div');
+   wealthElement.innerHTML = `<h3>Total Wealth : <strong>${formatMoney(wealth)}</strong></h3>`
+   main.appendChild(wealthElement);
+}
 
 
 //Format number as money
 function formatMoney(money){
   return  money.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' ₺';
-  
+
 }
 
 function updateDOM(providedData = data){
@@ -81,4 +89,4 @@ addUserButton.addEventListener('click',getRandomUser);
 doubleMoneyButton.addEventListener('click',doubleMoney);
 sortButton.addEventListener('click',sortByRichest);
 showMillionairesButton.addEventListener('click',showMillionaries);
-
+calculateWealthButton.addEventListener('click',calculateTotalWealth);
